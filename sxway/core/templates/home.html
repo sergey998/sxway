@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block extra_js %}
+  <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/expenses.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/reports.js" %}"></script>
+{% endblock extra_js %}
+
+{% block content %}
+  <nav class="navbar navbar-default" ng-controller="PagesController as pages">
+    <a href="#/" ng-click="pages.selectPage(1)"><img src="{% static "img/exway-logo-48.png" %}" class="pull-left logo"></a>
+    <a class="navbar-brand" href="#/" ng-click="pages.selectPage(1)">Exway - Expenses the Easy Way!</a>
+
+    <ul class="nav navbar-nav">
+      <li ng-class="{ active: pages.currentUrl() == '/' }"><a href="#/" ng-click="pages.selectPage(1)">Expenses</a></li>
+      <li ng-class="{ active: pages.currentUrl() == '/reports' }"><a href="#/reports" ng-click="pages.selectPage(2)">Reports</a></li>
+    </ul>
+
+    {% if request.user.is_authenticated %}
+      <form class="navbar-form navbar-right" role="logout" action="{% url 'auth:logout' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          Welcome, <b>{{ request.user.first_name }} {{ request.user.last_name }}&nbsp;&nbsp;</b>
+        </div>
+        <button class="btn btn-default" name="logout-submit">Logout</button>
+      </form>
+    {% endif %}
+
+  </nav>
+
+  <div class="container-fluid">
+    <ng-view viewstate></ng-view>
+  </div>
+{% endblock content %}

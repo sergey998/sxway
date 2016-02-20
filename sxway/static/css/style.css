@@ -1,0 +1,76 @@
+.space-bottom {
+  margin-bottom: 10px;
+}
+
+.space-top {
+  margin-top: 10px;
+}
+
+.nopadding-left {
+  padding-left: 0;
+}
+
+.nomargin-bottom {
+  margin-bottom: 0;
+}
+
+.range-slider, .ngrs-range-slider {
+  margin-top: 2px;
+}
+
+.logo {
+  margin-left: 30px;
+}
+
+.help-block {
+  font-size: 12px;
+}
+
+th.amount, td.amount {
+  text-align: right;
+}
+
+.bs-callout-title h4 {
+  color: #5cb85c;
+}
+
+.bs-callout {
+  margin: 20px 0;
+  padding: 5px;
+  border-left: 3px solid #eee;
+}
+
+.bs-callout-title {
+  border-color: #5cb85c;
+}
+
+.navbar-form.navbar-right:last-child {
+  margin-right: 0;
+}
+
+.form-sign .form-group {
+  margin-bottom: 0;
+}
+
+.form-sign .form-group ul.errorlist {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.form-sign .form-group ul.errorlist:first-child {
+  margin-top: 10px;
+}
+
+.form-sign .form-group ul.errorlist li {
+  color: #a94442;
+}
+
+label.errorlabel {
+  color: #A94442;
+}
+
+.submitted.ng-invalid {
+  border-color: #a94442;
+}

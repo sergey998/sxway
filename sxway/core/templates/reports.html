@@ -1,0 +1,53 @@
+<h2>Reports</h2>
+
+<section>
+  <ul class="nav nav-pills">
+    <li class="active">
+      <a>Weekly</a>
+    </li>
+  </ul>
+
+  <div class="panel" ng-controller="ReportsController as reportsCtrl" cg-busy="{promise:reportPromise, message:'Loading Report...'}">
+    <div class="alert alert-info" ng-show="!reportsCtrl.weeklyExpensesSet.length">No data for this report yet.</div>
+
+    <div class="row-fluid" ng-repeat="weeklyExpenses in reportsCtrl.weeklyExpensesSet">
+
+      <div class="bs-callout bs-callout-title">
+        <h4>Week from {$ weeklyExpenses.initialDate|date:"MM/dd/yyyy" $} to {$ weeklyExpenses.finalDate|date:"MM/dd/yyyy" $}</span></h4>
+      </div>
+
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Expense</th>
+            <th>Comment</th>
+            <th>Date and Time</th>
+            <th></th>
+            <th class="amount">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="expense in weeklyExpenses.expenses" class="success">
+            <td width="40%">{$ expense.description $}</td>
+            <td width="25%">{$ expense.comment $}</td>
+            <td width="15%">{$ expense.date|date:"MM/dd/yyyy" $}, {$ expense.time|time:"h:mm A" $}
+            <td></td>
+            <td width="10%" class="amount">{$ expense.amount|currency $}</td>
+          </tr>
+          <tr>
+            <th colspan="2"></th>
+            <th class="amount">Spending Days</th>
+            <th class="amount"><b>Day Average</b></td>
+            <th class="amount"><b>Total Amount</b></th>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td class="amount">{$ weeklyExpenses.count $}</td>
+            <td class="amount">{$ weeklyExpenses.average|currency $}</td>
+            <td class="amount">{$ weeklyExpenses.total|currency $}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
